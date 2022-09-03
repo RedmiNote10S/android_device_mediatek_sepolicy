@@ -53,6 +53,8 @@ allow mtk_agpsd rild:unix_dgram_socket sendto;
 
 # Allow system suspend to read the property of hwservicemanager
 allow mtk_agpsd system_suspend_hwservice:hwservice_manager find;
+binder_call(system_suspend_server, mtk_agpsd)
+binder_call(mtk_agpsd, system_suspend_server)
 
 # Allow libapmonitor to read the property of hwservicemanager.ready
 get_prop(mtk_agpsd,hwservicemanager_prop)
