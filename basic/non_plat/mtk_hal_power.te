@@ -33,6 +33,10 @@ allow mtk_hal_power proc_perfmgr:dir r_dir_perms;
 allow mtk_hal_power proc_perfmgr:file rw_file_perms;
 allowxperm mtk_hal_power proc_perfmgr:file ioctl PERFMGR_FPSGO_TOUCH;
 
+# Purpose: Allow powerHAL to access MCDI files
+r_dir_file(mtk_hal_power, proc_mcdi)
+allow mtk_hal_power proc_mcdi:file rw_file_perms;
+
 # Purpose : Allow powerHAL to access powerhal folder
 allow mtk_hal_power sdcard_type:dir create_dir_perms;
 allow mtk_hal_power sdcard_type:file create_file_perms;
